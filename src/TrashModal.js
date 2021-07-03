@@ -55,7 +55,7 @@ const TrashModal = (props) => {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button disabled={!props.trash.length} onClick={clearBinButtonHandler} style={{'marginRight': '299px'}} color='outline-danger'>Clear
+                    <Button disabled={!props.trash.length} onClick={clearBinButtonHandler} style={{'marginRight': '295px'}} color='outline-danger'>Clear
                         bin</Button>
                     <Button color="outline-secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
