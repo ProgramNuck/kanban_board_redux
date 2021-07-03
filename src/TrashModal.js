@@ -28,7 +28,7 @@ const TrashModal = (props) => {
 
     return (
         <div>
-            {props.trash.length > 0 && <Button style={{'float': 'right', 'marginRight': '790px'}} color="outline-secondary"
+            {props.trash.length > 0 && <Button style={{'float': 'right', 'marginRight': '1150px'}} color="outline-secondary"
                     onClick={toggle}>🗑</Button>}
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader>Tasks in bin</ModalHeader>
