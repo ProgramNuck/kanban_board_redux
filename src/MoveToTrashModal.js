@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import {connect} from "react-redux";
-import {getCards} from "./redux/actions";
+import {moveToTrash} from "./redux/actions";
 
 const MoveToTrashModal = (props) => {
     const [modal, setModal] = useState(false);
@@ -11,8 +11,8 @@ const MoveToTrashModal = (props) => {
     let {task} = props;
 
 
-    const trashContactButtonHandler = () => {
-        props.trashContact(task._id, task.name, task.description, task.priority, task.status);
+    const trashCardButtonHandler = () => {
+        props.moveToTrash(task);
         toggle();
     };
 
@@ -26,7 +26,7 @@ const MoveToTrashModal = (props) => {
                     Are you sure you want to move <b>{task.name}</b> contact to bin?
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="danger" onClick={trashContactButtonHandler}>Move</Button>{' '}
+                    <Button color="danger" onClick={trashCardButtonHandler}>Move</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
@@ -39,13 +39,7 @@ const MoveToTrashModal = (props) => {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    trashContact: (id, name, description, priority, status) => {
-        dispatch({
-            type: 'TRASH_CARD',
-            payload: {id, name, description, priority, status}
-        })
-    },
-    getCards: getCards()
+    moveToTrash: (card) => dispatch(moveToTrash(card))
 });
 
 

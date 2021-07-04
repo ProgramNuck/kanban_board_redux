@@ -72,15 +72,33 @@ export function editCard(taskId, updatedCard) {
             .catch(e => console.log(e))
 }
 
-export function clearTrashBin(trashTasks){
+export function clearTrashBin(cards){
     return (dispatch) =>
-       trashTasks = trashTasks.map(el =>
+       cards = cards.map(el => el.status.includes('trash') ?
         axios
             .delete(`https://nazarov-kanban-server.herokuapp.com/card/${el._id}`)
             .then(() => dispatch(
                 getCards()
             ))
-            .catch(e => console.log(e)))
+            .catch(e => console.log(e)) : el)
 }
 
+export function moveToTrash(card) {
+    return (dispatch) =>
+        axios
+            .patch(`https://nazarov-kanban-server.herokuapp.com/card/${card._id}`, {...card, status: card.status+' trash'})
+            .then(() => dispatch(
+                getCards()
+            ))
+            .catch(e => console.log(e))
+}
 
+export function restoreFromTrash(card, status) {
+    return (dispatch) =>
+        axios
+            .patch(`https://nazarov-kanban-server.herokuapp.com/card/${card._id}`, {...card, status})
+            .then(() => dispatch(
+                getCards()
+            ))
+            .catch(e => console.log(e))
+}
