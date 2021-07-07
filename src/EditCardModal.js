@@ -58,13 +58,13 @@ const EditCardModal = (props) => {
  <select value={newPriority} onChange={event => setNewPriority(event.target.value)}
          className="form-select form-select-sm"
          aria-label=".form-select-sm example">
-    <option selected>Select task's priority</option>
+    <option>Select task's priority</option>
      {props.priorities.map(el => <option key={el} value={el}>{el}</option>)}
 </select>
                             <br/>
             <select value={newStatus} onChange={event => setNewStatus(event.target.value)}
                     className="form-select form-select-sm" aria-label=".form-select-sm example">
-                 <option selected>Select task's status</option>
+                 <option>Select task's status</option>
                 {props.statuses.map(el => <option key={el} value={el}>{el}</option>)}
             </select>
                 </span>

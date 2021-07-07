@@ -24,10 +24,9 @@ function App(props) {
                 <ul className="nav nav-pills">
                     {!isTrash && <li className='nav-item'><AddTaskModal/></li>}
                     {isTrash && <li className='nav-item'><ClearBinModal isTrash={isTrash} setIsTrash={setIsTrash}/></li>}
-                    {props.cards.some(el => el.status.includes('trash')) &&
-                    <li className='nav-item'>{<Button style={{marginLeft: '10px'}} color="outline-secondary"
+                    <li className='nav-item'>{<Button disabled={props.cards.every(el => !el.status.includes('trash'))} style={{marginLeft: '10px'}} color="outline-secondary"
                                                       onClick={() => setIsTrash(!isTrash)}>{isTrash ? 'Return to List' : '🗑'}</Button>}</li>
-                    }
+
                 </ul>
                 {!isTrash &&
                 <div className="row align-items-start">
