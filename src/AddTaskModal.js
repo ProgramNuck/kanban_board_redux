@@ -50,12 +50,12 @@ import {createCard} from "./redux/actions";
                           <span className="input-group-text" id="inputGroup-sizing-default">Description</span>
                     <input  placeholder='Enter description of task here' value={description} type="text" className="form-control" aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default" onChange={event => setDescription(event.target.value)}/></div>
-                    <select value={priority} onChange={event => setPriority(+event.target.value)} className="form-select" aria-label="Default select example">
-                        <option selected>Choose priority of task</option>
+                    <select defaultValue={'DEFAULT'} onChange={event => setPriority(+event.target.value)} className="form-select" aria-label="Default select example">
+                        <option value='DEFAULT'>Choose priority of task</option>
                         {props.priorities.map(el => <option value={el} key={el}>{el}</option>)}
                     </select>
-                    <select value={status} onChange={event => setStatus(event.target.value)} className="form-select" aria-label="Default select example">
-                        <option selected>Choose status of task</option>
+                    <select defaultValue={'DEFAULT'} onChange={event => setStatus(event.target.value)} className="form-select" aria-label="Default select example">
+                        <option value={'DEFAULT'}>Choose status of task</option>
                         {props.statuses.map(el => <option value={el.title} key={el.title}>{el.title}</option>)}
                     </select>
                                     </span>
